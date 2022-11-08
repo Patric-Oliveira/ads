@@ -14,6 +14,13 @@
         <!-- Core toastr CSS-->
         <link href="<?php echo site_url('manager_assets/toastr/toastr.min.css') ?>" rel="stylesheet" />
         <?php echo $this->renderSection('styles'); ?>
+        <!-- Ajustar o Layout da Tabela-->
+        <style>
+            .dataTables_scrollHeadInner,
+            .table {
+                width: 100% !important
+            }
+        </style>
     </head>
     <body>
         <div class="d-flex" id="wrapper">

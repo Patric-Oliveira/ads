@@ -12,6 +12,7 @@
 
         $.get(url, function(response) {
 
+            /*window.refreshCSRFToken(response.token);*/
             $('#boxParents').html(response.parents);
 
         }, 'json');
