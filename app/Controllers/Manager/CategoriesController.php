@@ -92,7 +92,7 @@ class CategoriesController extends BaseController
         $options = [
             'class'         => 'form-control',
             'placeholder'   => 'Escolha...',
-            'selected'      => " ",
+            'selected'      => "",
         ];
 
         $response = [
