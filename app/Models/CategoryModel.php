@@ -15,7 +15,7 @@ class CategoryModel extends MyBaseModel
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'parent_id', 
+        'parent_id',
         'name',
         'slug',
     ];
@@ -29,6 +29,14 @@ class CategoryModel extends MyBaseModel
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['escapeDataXSS'];
-    protected $beforeUpdate   = ['escapeDataXSS'];
+    protected $beforeInsert   = ['escapeDataXSS', 'generateSlug'];
+    protected $beforeUpdate   = ['escapeDataXSS', 'generateSlug'];
+
+    protected function generateSlug(array $data): array
+    {
+        if (isset($data['data']['name'])) {
+            $data['data']['slug'] = mb_url_title($data['data']['name'], lowercase: true);
+        }
+        return $data;
+    }
 }

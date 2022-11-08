@@ -80,5 +80,4 @@
         $('meta[name="<?php echo csrf_token(); ?>"]').attr('content', token);
     }
 </script>
-
 <?= $this->endSection() ?>
