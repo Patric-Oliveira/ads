@@ -59,6 +59,17 @@ class CategoriesController extends BaseController
         return $this->response->setJSON($response);
     }
 
+    public function create()
+    {
+        $this->categoryRequest->validateBeforeSave('category');
+        
+        $category = new Category($this->removeSpoofingFromRequest());
+
+        $this->categoryService->trySaveCategory($category);
+
+        return $this->response->setJSON($this->categoryRequest->respondWithMessage(message: 'Dados Salvos Com Sucesso!'));
+    }
+
     public function update()
     {
         $this->categoryRequest->validateBeforeSave('category');

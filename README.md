@@ -1,2 +1,2 @@
 # ads
- sistema de assinatura digital e anuncios
+Anúncios com CI4 e Recorrência
