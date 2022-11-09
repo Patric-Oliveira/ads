@@ -39,6 +39,8 @@
 <?= $this->section('scripts') ?>
 <!-- Core datatables JS -->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.js"></script>
+<!-- Core SweetAlert2 JS -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Includes -->
 <?php echo $this->include('Manager/Categories/Scripts/_datatable_all_archived'); ?>
 <?php echo $this->include('Manager/Categories/Scripts/_recover_category'); ?>
