@@ -8,13 +8,14 @@
         var url = '<?php echo route_to('categories.delete'); ?>';
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '<?php echo lang('App.delete_confirmation'); ?>',
+            text: '<?php echo lang('App.info_delete_confirmation'); ?>',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '<?php echo lang('Categories.btn_confirmed_delete'); ?>',
+            cancelButtonText: '<?php echo lang('Categories.btn_cancel'); ?>'
         }).then((result) => {
             if (result.isConfirmed) {
 

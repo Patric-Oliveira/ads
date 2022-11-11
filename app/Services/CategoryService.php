@@ -29,7 +29,7 @@ class CategoryService
                     'id'      => 'updateCategoryBtn', // ID do html element
                     'class'   => 'btn btn-primary btn-sm'
                 ],
-                'Editar'
+                lang('Categories.btn_edit')
             );
 
             $btnArchive = form_button(
@@ -38,7 +38,7 @@ class CategoryService
                     'id'      => 'archiveCategoryBtn', // ID do html element
                     'class'   => 'btn btn-info btn-sm'
                 ],
-                'Arquivar'
+                lang('Categories.btn_archived')
             );
 
             $data[] = [
@@ -66,7 +66,7 @@ class CategoryService
                     'id'      => 'recoverCategoryBtn', // ID do html element
                     'class'   => 'btn btn-primary btn-sm'
                 ],
-                'Recuperar'
+                lang('Categories.btn_recover')
             );
 
             $btnDelete = form_button(
@@ -75,7 +75,7 @@ class CategoryService
                     'id'      => 'deleteCategoryBtn', // ID do html element
                     'class'   => 'btn btn-danger btn-sm'
                 ],
-                'Excluir'
+                lang('Categories.btn_delete')
             );
 
             $data[] = [
@@ -94,7 +94,7 @@ class CategoryService
         $category = $this->categoryModel->withDeleted($withDeleted)->find($id);
 
         if (is_null($category)) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Category not found');
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(lang('App.info_not_found'));
         }
 
         return $category;
@@ -180,7 +180,7 @@ class CategoryService
             }
         } catch (\Exception $e) {
             //die($e->getMessage());
-            die('Erro ao salvar os dados');
+            die(lang('App.info_data_error'));
         }
     }
 
@@ -193,7 +193,7 @@ class CategoryService
             $this->categoryModel->delete($category->id);
         } catch (\Exception $e) {
             //die($e->getMessage());
-            die('Erro ao salvar os dados');
+            die(lang('App.info_data_error'));
         }
     }
 
@@ -209,7 +209,7 @@ class CategoryService
 
         } catch (\Exception $e) {
             //die($e->getMessage());
-            die('Erro ao salvar os dados');
+            die(lang('App.info_data_error'));
         }
     }
 
@@ -222,7 +222,7 @@ class CategoryService
             $this->categoryModel->delete($category->id, purge: true);
         } catch (\Exception $e) {
             //die($e->getMessage());
-            die('Erro ao salvar os dados');
+            die(lang('App.info_data_error'));
         }
     }
 }

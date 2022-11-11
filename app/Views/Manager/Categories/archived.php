@@ -18,14 +18,14 @@
                     <h5><?php echo $title ?? ''; ?></h5>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('categories'); ?>">Voltar</a>
+                    <a class="btn btn-primary btn-sm mt-2 mb-4" href="<?php echo route_to('categories'); ?>"><?php echo lang('Categories.btn_back'); ?></a>
                     <table class="table table-borderless table-striped" id="dataTable">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Slug</th>
-                                <th scope="col">Ações</th>
+                                <th scope="col"><?php echo lang('Categories.label_name'); ?></th>
+                                <th scope="col"><?php echo lang('Categories.label_slug'); ?></th>
+                                <th scope="col"><?php echo lang('Categories.btn_actions'); ?></th>
                             </tr>
                         </thead>
                     </table>
