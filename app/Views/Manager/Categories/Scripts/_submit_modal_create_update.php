@@ -35,7 +35,7 @@
                 $('.modal-title').text('Criar Categoria');
                 $(form).attr('action', '<?php echo route_to('categories.create'); ?>');
                 $(form).find('input[name="id"]').val('');
-                $(['name=_method']).remove();
+                $('input[name="_method"]').remove();
             },
             error: function() {
                 alert('Error Backend');
