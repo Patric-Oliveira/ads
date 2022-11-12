@@ -35,4 +35,35 @@ class Plan extends Entity
         $this->attributes['is_highlighted'] = (bool) $isHighlighted;
         return $this;
     }
+
+    public function setIntervalRepeats()
+    {
+        $this->repeats = null;
+
+        $this->attributes['interval'] = match($this->attributes['recorrence']) {
+
+            'monthly' => self::INTERVAL_MONTHLY,
+            'quarterly' => self::INTERVAL_QUARTERLY,
+            'semester' => self::INTERVAL_SEMESTER,
+            'yearly' => self::INTERVAL_YEARLY,
+            default => throw new \InvalidArgumentException("Unsupported {$this->attributes['recorrence']}")
+        };
+
+        return $this;
+    }
+
+    public function recover()
+    {
+        $this->attributes['deleted_at'] = null;
+    }
+
+    public function isHighlighted()
+    {
+        return $this->attributes['is_highlighted'] ? lang('Plans.text_is_highlighted') : lang('Plans.text_no_highlighted');
+    }
+
+    public function adverts()
+    {
+        return $this->attributes['adverts'] ?? lang('Plans.text_unlimited_adverts');
+    }
 }
