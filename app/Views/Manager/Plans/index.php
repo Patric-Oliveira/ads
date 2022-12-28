@@ -42,12 +42,15 @@
 <?= $this->section('scripts') ?>
 <!-- Core datatables JS -->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/datatables.min.js"></script>
+<!-- Mask JS -->
+<script type="text/javascript" src="<?php echo site_url('manager_assets/mask/jquery.mask.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo site_url('manager_assets/mask/app.js') ?>"></script>
 <!-- Includes -->
 <?php echo $this->include('Manager/Plans/Scripts/_datatable_all'); ?>
-<!--
+<?php echo $this->include('Manager/Plans/Scripts/_show_modal_to_create'); ?>
+
 <?php //echo $this->include('Manager/Plans/Scripts/_get_category_info'); ?>
 <?php //echo $this->include('Manager/Plans/Scripts/_submit_modal_create_update'); ?>
-<?php //echo $this->include('Manager/Plans/Scripts/_show_modal_to_create'); ?>
 <?php //echo $this->include('Manager/Plans/Scripts/_archive_category'); ?>
 
 
