@@ -66,4 +66,11 @@ class Plan extends Entity
     {
         return $this->attributes['adverts'] ?? lang('Plans.text_unlimited_adverts');
     }
+
+    public function details()
+    {
+        //alterar para exibir conforme o idioma
+
+        return number_to_currency($this->value, 'BRL', 'pt-BR', 2) . ' /' . $this->recorrence;
+    }
 }

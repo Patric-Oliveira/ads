@@ -30,6 +30,7 @@
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('manager'); ?>"><?php echo lang('App.sidebar.manager.home') ?></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('categories'); ?>"><?php echo lang('App.sidebar.manager.categories') ?></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo route_to('plans'); ?>"><?php echo lang('App.sidebar.manager.plans') ?></a>
                 </div>
             </div>
             <!-- Page content wrapper-->

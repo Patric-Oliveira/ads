@@ -15,12 +15,29 @@ return [
     'info_data_error' => 'Erro ao Salvar os Dados',
     'info_not_found' => 'Categoria Não Existe',
 
+    // Buttons 
+    'btn_actions' => 'Ações',
+    'btn_cancel' => 'Cancelar',
+    'btn_save' => 'Salvar',
+    'btn_back' => 'Voltar',
+    'btn_new' => 'Criar Categoria',
+    'btn_edit' => 'Editar',
+    'btn_archived' => 'Arquivar',
+    'btn_all_archived' => 'Arquivados',
+    'btn_recover' => 'Recuperar',
+    'btn_delete' => 'Excluir',
+    'btn_actions' => 'Ações',
+    'btn_archived_categories' => 'Categorias Arquivadas',
+    'btn_confirmed_delete' => 'Sim, Exclua!',
+    'btn_logout' => 'Encerrar Sessão',
+
 
     'sidebar' => [
 
         'manager' => [
             'home' => 'Principal',
             'categories' => 'Categorias',
+            'plans' => 'Planos de Assinaturas',
         ],
     ],
 
