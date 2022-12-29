@@ -28,4 +28,13 @@ class PlansController extends BaseController
         
         return $this->response->setJSON(['data' => $this->planService->getAllPlans()]);
     }
+
+    public function getRecorrences()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+        
+        return $this->response->setJSON(['recorrences' => $this->planService->getRecorrences()]);
+    }
 }
