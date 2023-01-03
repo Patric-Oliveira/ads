@@ -15,7 +15,7 @@ class PlansController extends BaseController
     public function __construct()
     {
         $this->planService = Factories::class(PlanService::class);
-        $this->planService = Factories::class(PlanRequest::class);
+        $this->planRequest = Factories::class(PlanRequest::class);
     }
 
     public function index()

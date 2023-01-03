@@ -3,10 +3,6 @@
 
         e.preventDefault();
 
-        alert('Patric');
-
-        return;
-
         var form = this;
 
         $.ajax({
@@ -25,7 +21,7 @@
                 window.refreshCSRFToken(response.token);
 
                 if (response.success == false) {
-                    toastr.error('Verifique os Erros e Tente Novamente');
+                    toastr.error('<?php echo lang('App.danger_validations');?>');
                     $.each(response.errors, function(field, value) {
                         $(form).find('span.' + field).text(value);
                     })
@@ -33,11 +29,11 @@
                 }
 
                 toastr.success(response.message);
-                $('#categoryModal').modal('hide');
+                $('#modalPlan').modal('hide');
                 $(form)[0].reset();
                 $('#dataTable').DataTable().ajax.reload(null, false);
-                $('.modal-title').text('Criar Categoria');
-                $(form).attr('action', '<?php echo route_to('categories.create'); ?>');
+                $('.modal-title').text('<?php echo lang('Plans.title_new2');?>');
+                $(form).attr('action', '<?php echo route_to('plans.create'); ?>');
                 $(form).find('input[name="id"]').val('');
                 $('input[name="_method"]').remove();
             },

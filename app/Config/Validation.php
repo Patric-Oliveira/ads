@@ -74,6 +74,12 @@ class Validation extends BaseConfig
         'recorrence' => [
             'in_list'   => 'Plans.recorrence.in_list',
         ],
+        'name' => [
+            'required'   => 'Plans.name.required',
+            'min_length' => 'Plans.name.min_length',
+            'max_length' => 'Plans.name.max_length',
+            'is_unique'  => 'Plans.name.is_unique',
+        ],
     ];
 
 }

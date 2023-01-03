@@ -4,6 +4,7 @@ return [
     
     'title_index'                   => 'Listando os Planos',
     'title_new'                     => 'Criando novo Plano',
+    'title_new2'                    => 'Criar Plano',
     'title_edit'                    => 'Editando o Plano',
     'text_monthly'                  => 'Mensal',
     'text_quarterly'                => 'Trimestral',
@@ -53,5 +54,11 @@ return [
     // Validation messages
     'recorrence'        => [
         'in_list' => 'Por favor escolha uma das opções: Mensal, Trimestral, Semestral ou Anual',
+    ],
+    'name' => [
+        'required'   => 'Campo obrigatório, preencha o nome para prosseguir',
+        'min_length' => 'Informe pelo menos 3 caractéres',
+        'max_length' => 'Informe no máximo 90 caractéres',
+        'is_unique'  => 'Essa categoria já existe',
     ],
 ];

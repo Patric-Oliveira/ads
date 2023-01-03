@@ -48,4 +48,10 @@ return [
     'recorrence'        => [
         'in_list' => 'Please choose one of the options: Monthly, Quarterly, Semiannual or Annual',
     ],
+    'name' => [
+        'required'   => 'Mandatory field, fill in the name to proceed',
+        'min_length' => 'Enter at least 3 characters',
+        'max_length' => 'Please enter a maximum of 90 characters',
+        'is_unique'  => 'This category already exists',
+    ],
 ];
