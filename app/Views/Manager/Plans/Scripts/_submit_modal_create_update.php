@@ -1,7 +1,11 @@
 <script>
-    $('#categories-form').submit(function(e) {
+    $('#plans-form').submit(function(e) {
 
         e.preventDefault();
+
+        alert('Patric');
+
+        return;
 
         var form = this;
 

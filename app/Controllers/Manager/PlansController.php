@@ -3,16 +3,19 @@
 namespace App\Controllers\Manager;
 
 use App\Controllers\BaseController;
+use App\Requests\PlanRequest;
 use App\Services\PlanService;
 use CodeIgniter\Config\Factories;
 
 class PlansController extends BaseController
 {
     private $planService;
+    private $planRequest;
 
     public function __construct()
     {
         $this->planService = Factories::class(PlanService::class);
+        $this->planService = Factories::class(PlanRequest::class);
     }
 
     public function index()
@@ -36,5 +39,10 @@ class PlansController extends BaseController
         }
         
         return $this->response->setJSON(['recorrences' => $this->planService->getRecorrences()]);
+    }
+
+    public function create()
+    {
+        $this->planRequest->validateBeforeSave('plan');
     }
 }

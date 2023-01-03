@@ -48,9 +48,9 @@
 <!-- Includes -->
 <?php echo $this->include('Manager/Plans/Scripts/_datatable_all'); ?>
 <?php echo $this->include('Manager/Plans/Scripts/_show_modal_to_create'); ?>
+<?php echo $this->include('Manager/Plans/Scripts/_submit_modal_create_update'); ?>
 
 <?php //echo $this->include('Manager/Plans/Scripts/_get_category_info'); ?>
-<?php //echo $this->include('Manager/Plans/Scripts/_submit_modal_create_update'); ?>
 <?php //echo $this->include('Manager/Plans/Scripts/_archive_category'); ?>
 
 
