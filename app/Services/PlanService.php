@@ -69,7 +69,20 @@ class PlanService
         if (is_null($recorrence)) {
             return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
         }
+    }
 
-        
+    public function trySavePlan(Plan $plan, bool $protect = true)
+    {
+        try {
+            /**
+             * @todo gerenciar a criação/atualuzação na gerencianet
+             */
+            if ($plan->hasChanged()) {
+                $this->planModel->protect($protect)->save($plan);
+            }
+        } catch (\Exception $e) {
+            //die($e->getMessage());
+            die(lang('App.info_data_error'));
+        }
     }
 }

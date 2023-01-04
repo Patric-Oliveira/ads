@@ -3,6 +3,7 @@
 namespace App\Controllers\Manager;
 
 use App\Controllers\BaseController;
+use App\Entities\Plan;
 use App\Requests\PlanRequest;
 use App\Services\PlanService;
 use CodeIgniter\Config\Factories;
@@ -44,5 +45,11 @@ class PlansController extends BaseController
     public function create()
     {
         $this->planRequest->validateBeforeSave('plan');
+
+        $plan = new Plan($this->removeSpoofingFromRequest());
+
+        $this->planService->trySavePlan($plan);
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_saved')));
     }
 }
