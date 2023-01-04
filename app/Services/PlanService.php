@@ -128,9 +128,9 @@ class PlanService
     public function trySavePlan(Plan $plan, bool $protect = true)
     {
         try {
-            /**
-             * @todo gerenciar a criação/atualuzação na gerencianet
-             */
+            
+            $this->createOrUpdatePlanOnGerencianet($plan);
+
             if ($plan->hasChanged()) {
                 $this->planModel->protect($protect)->save($plan);
             }
