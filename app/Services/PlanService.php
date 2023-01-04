@@ -9,10 +9,13 @@ use CodeIgniter\Config\Factories;
 class PlanService
 {
     private $planModel;
+    private $gerencianetService;
+
 
     public function __construct()
     {
         $this->planModel = Factories::models(PlanModel::class);
+        $this->gerencianetService = Factories::class(GerencianetService::class);
     }
 
     public function getAllPlans() : array
@@ -193,6 +196,24 @@ class PlanService
         } catch (\Exception $e) {
            
             die($e->getMessage());
+        }
+    }
+
+    private function createOrUpdatePlanOnGerencianet(Plan $plan)
+    {
+        // Esta criando um plano ?
+        if (empty($plan->id)) {
+            
+            // Sim... 
+            return $this->gerencianetService->createPlan($plan);
+        }
+
+        // Atualizando...
+        // Contudo, precisa verificar se o nome do plano foi alterado
+        // A Gerencianet permite atualizar apenas o nome do plano
+        if ($plan->hasChanged('name')) {
+
+            return $this->gerencianetService->updatePlan($plan);
         }
     }
 }
