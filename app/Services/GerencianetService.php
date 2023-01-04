@@ -6,7 +6,6 @@ use Gerencianet\Exception\GerencianetException;
 use Gerencianet\Gerencianet;
 
 use App\Entities\Plan;
-use Exception;
 
 class GerencianetService
 {
@@ -58,11 +57,49 @@ class GerencianetService
             //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
             //exit;
         } catch (GerencianetException $e) {
-            print_r($e->code);
-            print_r($e->error);
-            print_r($e->errorDescription);
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao salvar o plano na gerencianet, entre em contato com o desenvolvedor');
         } catch (\Exception $e) {
-            print_r($e->getMessage());
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao salvar o plano na gerencianet, entre em contato com o desenvolvedor');
+        }
+    }
+
+    public function updatePlan(Plan $plan)
+    {
+        $params = ['id' => $plan->plan_id];
+
+        $body = ['name' => $plan->name];
+
+        try {
+            $api = new Gerencianet($this->options);
+            $response = $api->updatePlan($params, $body);
+
+            //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
+        } catch (GerencianetException $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao atualizar o plano na gerencianet, entre em contato com o desenvolvedor');
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao atualizar o plano na gerencianet, entre em contato com o desenvolvedor');
+        }
+    }
+
+    public function deletePlan(int $planID)
+    {
+        $params = ['id' => $planID];
+
+        try {
+            $api = new Gerencianet($this->options);
+            $response = $api->deletePlan($params, []);
+
+            //echo '<pre>' . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</pre>';
+        } catch (GerencianetException $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao deletar o plano na gerencianet, entre em contato com o desenvolvedor');
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            die('Erro ao deletar o plano na gerencianet, entre em contato com o desenvolvedor');
         }
     }
 }

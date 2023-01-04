@@ -187,9 +187,7 @@ class PlanService
 
             $plan = $this->getPlanByID($id, withDeleted: true);
 
-            /**
-             * @todo deletar plano na gerencianet
-             */
+             $this->gerencianetService->deletePlan($plan->plan_id);
 
             $this->planModel->delete($plan->id, purge: true);
 
