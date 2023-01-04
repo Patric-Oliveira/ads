@@ -1,11 +1,11 @@
 <script>
-    $(document).on('click', '#deleteCategoryBtn', function(e) {
+    $(document).on('click', '#deletePlanBtn', function(e) {
 
         e.preventDefault();
 
         var id = $(this).data('id');
 
-        var url = '<?php echo route_to('categories.delete'); ?>';
+        var url = '<?php echo route_to('plans.delete'); ?>';
 
         Swal.fire({
             title: '<?php echo lang('App.delete_confirmation'); ?>',
@@ -14,8 +14,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '<?php echo lang('Categories.btn_confirmed_delete'); ?>',
-            cancelButtonText: '<?php echo lang('Categories.btn_cancel'); ?>'
+            confirmButtonText: '<?php echo lang('App.btn_confirmed_delete'); ?>',
+            cancelButtonText: '<?php echo lang('App.btn_cancel'); ?>'
         }).then((result) => {
             if (result.isConfirmed) {
 

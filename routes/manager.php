@@ -24,7 +24,7 @@ $routes->group('{locale}/manager', ['namespace' => 'App\Controllers\Manager'], s
         $routes->get('/', 'PlansController::index', ['as' => 'plans']);
         $routes->get('archived', 'PlansController::archived', ['as' => 'plans.archived']);
         $routes->get('get-all', 'PlansController::getAllPlans', ['as' => 'plans.get.all']);
-        $routes->get('get-all-archived', 'PlansController::getAllArchivedPlans', ['as' => 'plans.get.all.archived']);
+        $routes->get('get-all-archived', 'PlansController::getAllArchived', ['as' => 'plans.get.all.archived']);
         $routes->get('get-info', 'PlansController::getPlanInfo', ['as' => 'plans.get.info']);
         $routes->get('get-recorrences', 'PlansController::getRecorrences', ['as' => 'plans.get.recorrences']);
         

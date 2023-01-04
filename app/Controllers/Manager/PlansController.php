@@ -24,6 +24,11 @@ class PlansController extends BaseController
         return view('Manager/Plans/index');
     }
 
+    public function archived()
+    {
+        return view('Manager/Plans/archived');
+    }
+
     public function getAllPlans()
     {
         if (!$this->request->isAJAX()) {
@@ -31,6 +36,15 @@ class PlansController extends BaseController
         }
         
         return $this->response->setJSON(['data' => $this->planService->getAllPlans()]);
+    }
+
+    public function getAllArchived()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+        
+        return $this->response->setJSON(['data' => $this->planService->getAllArchived()]);
     }
 
     public function getRecorrences()
@@ -62,11 +76,42 @@ class PlansController extends BaseController
         $response = [
             'plan'         => $plan = $this->planService->getPlanByID($this->request->getGetPost('id')),
             'recorrences'  => $this->planService->getRecorrences($plan->recorrence)
-            /**
-             * @todo enviar as recorrencias o selected
-             */
         ];
 
         return $this->response->setJSON($response);
+    }
+
+    public function update()
+    {
+        $this->planRequest->validateBeforeSave('plan');
+
+        $plan = $this->planService->getPlanByID($this->request->getGetPost('id'));
+
+        $plan->fill($this->removeSpoofingFromRequest());
+
+        $this->planService->trySavePlan($plan);
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_saved')));
+    }
+
+    public function archive()
+    {
+        $this->planService->tryArchivePlan($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_archived2')));
+    }
+    
+    public function recover()
+    {
+        $this->planService->tryRecoverPlan($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_recovered2')));
+    }
+
+    public function delete()
+    {
+        $this->planService->tryDeletePlan($this->request->getGetPost('id'));
+
+        return $this->response->setJSON($this->planRequest->respondWithMessage(message: lang('App.success_deleted2')));
     }
 }

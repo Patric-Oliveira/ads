@@ -3,6 +3,7 @@
 return [
     
     'title_index'                   => 'Listando os Planos',
+    'title_archived'                => 'Planos Arquivados',
     'title_new'                     => 'Criando novo Plano',
     'title_new2'                    => 'Criar Plano',
     'title_edit'                    => 'Editando o Plano',

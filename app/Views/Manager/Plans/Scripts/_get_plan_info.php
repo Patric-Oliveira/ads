@@ -20,6 +20,11 @@
             $('#plans-form').append("<input type='hidden' name='_method' value='PUT'>");
             $('#boxRecorrences').html(response.recorrences);
             $('#plans-form').find('span.error-text').text('');
-        }, 'json');
+            
+        }, 'json').fail(function() {
+
+            toastr.error('Error Backend');
+
+        });
     })
 </script>

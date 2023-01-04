@@ -53,6 +53,44 @@ class PlanService
         return $data;
     }
 
+    public function getAllArchived() : array
+    {
+        $plans = $this->planModel->onlyDeleted()->findAll();
+
+        $data = [];
+
+        foreach ($plans as $plan) {
+
+            $btnRecover = form_button(
+                [
+                    'data-id' => $plan->id,
+                    'id'      => 'recoverPlanBtn', // ID do html element
+                    'class'   => 'btn btn-primary btn-sm'
+                ],
+                lang('App.btn_recover')
+            );
+
+            $btnDelete = form_button(
+                [
+                    'data-id' => $plan->id,
+                    'id'      => 'deletePlanBtn', // ID do html element
+                    'class'   => 'btn btn-danger btn-sm'
+                ],
+                lang('App.btn_delete')
+            );
+
+            $data[] = [
+                'code'           => $plan->plan_id,
+                'name'           => $plan->name,
+                'is_highlighted' => $plan->isHighlighted(),
+                'details'        => $plan->details(),
+                'actions'        => $btnRecover . ' ' . $btnDelete,
+            ];
+        }
+
+        return $data;
+    }
+
     public function getRecorrences(string $recorrence = null): string
     {
         $options = [];
@@ -66,9 +104,20 @@ class PlanService
             Plan::OPTION_YEARLY     => lang('Plans.text_yearly'),
         ];
 
+        // criando
         if (is_null($recorrence)) {
             return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
         }
+
+        // Editando
+        $selected[] = match ($recorrence) {
+
+            Plan::OPTION_MONTHLY    => Plan::OPTION_MONTHLY,
+            Plan::OPTION_QUARTERLY  => Plan::OPTION_QUARTERLY,
+            Plan::OPTION_SEMESTER   =>  Plan::OPTION_SEMESTER,
+            Plan::OPTION_YEARLY     => Plan::OPTION_YEARLY,
+            default                 => throw new \InvalidArgumentException("Unsupported recorrence {$recorrence}")
+        };
 
         return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
     }
@@ -97,5 +146,53 @@ class PlanService
         }
 
         return $plan;
+    }
+
+    public function tryArchivePlan(int $id)
+    {
+        try {
+
+            $plan = $this->getPlanByID($id);
+
+            $this->planModel->delete($plan->id);
+
+        } catch (\Exception $e) {
+           
+            die($e->getMessage());
+        }
+    }
+
+    public function tryRecoverPlan(int $id)
+    {
+        try {
+
+            $plan = $this->getPlanByID($id, withDeleted:true);
+
+            $plan->recover();
+
+            $this->planModel->protect(false)->save($plan);
+
+        } catch (\Exception $e) {
+           
+            die($e->getMessage());
+        }
+    }
+
+    public function tryDeletePlan(int $id)
+    {
+        try {
+
+            $plan = $this->getPlanByID($id, withDeleted: true);
+
+            /**
+             * @todo deletar plano na gerencianet
+             */
+
+            $this->planModel->delete($plan->id, purge: true);
+
+        } catch (\Exception $e) {
+           
+            die($e->getMessage());
+        }
     }
 }
