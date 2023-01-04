@@ -69,6 +69,8 @@ class PlanService
         if (is_null($recorrence)) {
             return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
         }
+
+        return form_dropdown('recorrence', $options, $selected, ['class' => 'form-control']);
     }
 
     public function trySavePlan(Plan $plan, bool $protect = true)
@@ -84,5 +86,16 @@ class PlanService
             //die($e->getMessage());
             die(lang('App.info_data_error'));
         }
+    }
+
+    public function getPlanByID(int $id, bool $withDeleted = false)
+    {
+        $plan = $this->planModel->withDeleted($withDeleted)->find($id);
+
+        if (is_null($plan)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(lang('Plan Not Found'));
+        }
+
+        return $plan;
     }
 }

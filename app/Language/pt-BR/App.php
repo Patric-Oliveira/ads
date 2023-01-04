@@ -13,7 +13,7 @@ return [
     'info_delete_confirmation' => 'Essa Ação Não Poderá Ser Revertida',
     'info_empty_data' => 'Não Há Dados para Exibir',
     'info_data_error' => 'Erro ao Salvar os Dados',
-    'info_not_found' => 'Categoria Não Existe',
+    'info_not_found' => 'Category Not Found',
 
     // Buttons 
     'btn_actions' => 'Ações',
