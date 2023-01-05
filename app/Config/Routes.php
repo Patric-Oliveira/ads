@@ -11,6 +11,9 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
     require SYSTEMPATH . 'Config/Routes.php';
 }
 
+// rotas do auth package
+\Fluent\Auth\Facades\Auth::routes();
+
 /*
  * --------------------------------------------------------------------
  * Router Setup
