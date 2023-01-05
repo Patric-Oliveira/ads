@@ -11,15 +11,6 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
     require SYSTEMPATH . 'Config/Routes.php';
 }
 
-// rotas do auth package
-\Fluent\Auth\Facades\Auth::routes();
-
-// REMOVER ISSO
-$routes->group('dashboard', ['filter' => 'auth:web'], function ($routes) {
-    $routes->get('/', 'Home::dashboard', ['filter' => 'verified']);
-    $routes->get('confirm', 'Home::confirm', ['filter' => 'confirm']);
-});
-
 /*
  * --------------------------------------------------------------------
  * Router Setup
@@ -51,6 +42,16 @@ if (file_exists($manager = ROOTPATH . 'routes/manager.php')) {
 if (file_exists($api = ROOTPATH . 'routes/api.php')) {
     require $api;
 }
+
+// rotas do auth package
+\Fluent\Auth\Facades\Auth::routes();
+
+// REMOVER ISSO
+$routes->group('dashboard', ['filter' => 'auth:web'], function ($routes) {
+    $routes->get('/', 'Home::dashboard', ['filter' => 'verified']);
+    $routes->get('confirm', 'Home::confirm', ['filter' => 'confirm']);
+});
+
 
 
 /*
