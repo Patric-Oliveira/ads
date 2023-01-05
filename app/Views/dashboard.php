@@ -281,6 +281,8 @@
 
 			<h2>You're logged in as <?= auth()->user()->username ?></h2>
 
+			<?php d(auth()->user()->isSuperadmin()); ?>
+
 		</div>
 
 	</header>
