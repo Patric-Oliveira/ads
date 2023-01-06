@@ -8,6 +8,7 @@ class ManagerController extends BaseController
 {
     public function index()
     {
+        //return redirect()->route('plans')->with('success', 'Você não pode acessar esse menu');
         $data = [
             'title' => 'Home do Manager'
         ];

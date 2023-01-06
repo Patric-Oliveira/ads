@@ -7,6 +7,7 @@
 	<meta name="description" content="The small framework with powerful features">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
 	<!-- STYLES -->
 
@@ -268,7 +269,7 @@
 				<li class="menu-item hidden"><a href="/">Home</a></li>
 				<li class="menu-item hidden">
 					<form method="POST" action="<?= route_to('logout') ?>">
-					<?php echo csrf_field(); ?>
+						<?php echo csrf_field(); ?>
 						<button type="submit">Logout</button>
 					</form>
 				</li>
@@ -379,6 +380,8 @@
 	</footer>
 
 	<!-- SCRIPTS -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
 		function toggleMenu() {

@@ -57,6 +57,7 @@
                     </div>
                 </nav>
                 <!-- Page content-->
+                <?php echo $this->include('Manager/Layout/_session_messages'); ?>
                 <?php echo $this->renderSection('content'); ?>
             </div>
         </div>

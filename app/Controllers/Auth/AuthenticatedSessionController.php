@@ -80,8 +80,15 @@ class AuthenticatedSessionController extends BaseController
         // Clear the throttle key
         RateLimiter::clear($this->throttleKey());
 
+        if (Auth::user()->isSuperadmin()) {
+
+            return redirect()->route('manager')->with('success', lang('App.messages.welcome', ['name' => Auth::user()->name ?? Auth::user()->username]));
+        }
+
         // Finnaly we're success login.
-        return redirect(config('Auth')->home)->withCookies();
+        return redirect(config('Auth')->home)
+        ->with('success', lang('App.messages.welcome', ['name' => Auth::user()->name ?? Auth::user()->username]))
+        ->withCookies();
     }
 
     /**
