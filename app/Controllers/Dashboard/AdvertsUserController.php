@@ -4,10 +4,10 @@ namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
 
-class AdvertController extends BaseController
+class AdvertsUserController extends BaseController
 {
     public function index()
     {
-        //
+        return view('Dashboard/Adverts/index');
     }
 }

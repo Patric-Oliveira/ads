@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Patric Oliveira, patric.eng.computation@gmail.com" />
     <meta name="<?php echo csrf_token(); ?>" content="<?php echo csrf_hash(); ?>" class="csrf" />
-    <title><?php echo env('APP_NAME') . ' - Anúncios e Recorrências'; ?></title>
+    <title><?php echo $this->renderSection('title'); ?> <?php echo ' -  Anúncios e Recorrências'?></title>
 
     <!-- PLUGINS CSS STYLE -->
 

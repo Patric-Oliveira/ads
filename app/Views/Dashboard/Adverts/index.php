@@ -1,7 +1,7 @@
 <?php echo $this->extend('Dashboard/Layout/main.php') ?>
 
 <?= $this->section('title') ?>
-<?php echo $title ?? 'Principal'; ?>
+<?php echo $title ?? 'Listando Meus Anúncios'; ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
@@ -20,7 +20,7 @@
                 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
                     <!-- Recently Favorited -->
                     <div class="widget dashboard-container my-adslist">
-                        <h3 class="widget-header">Listando os Anúncios</h3>
+                        <h3 class="widget-header">Listando Meus Anúncios</h3>
 
                     </div>
                 </div>
