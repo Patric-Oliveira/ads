@@ -8,9 +8,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!--===========================================
-=            Popular deals section            =
-============================================-->
 <section class="popular-deals section bg-gray">
     <div class="container">
         <div class="row">
