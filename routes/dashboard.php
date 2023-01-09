@@ -11,5 +11,6 @@ $routes->group('dashboard', ['namespace' => 'App\Controllers\Dashboard', 'filter
     $routes->group('adverts', ['namespace' => 'App\Controllers\Dashboard'], function ($routes) {
 
         $routes->get('my', 'AdvertsUserController::index', ['as' => 'my.adverts']);
+        $routes->get('get-all-my-adverts', 'AdvertsUserController::getUserAdverts', ['as' => 'get.all.my.adverts']);
     });
 });

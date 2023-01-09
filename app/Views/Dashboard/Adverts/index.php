@@ -5,6 +5,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.13.1/r-2.4.0/datatables.min.css"/>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -55,5 +56,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<?php echo $title ?? ''; ?>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.13.1/r-2.4.0/datatables.min.js"></script>
+<?php echo $this->include('Dashboard/Adverts/Scripts/_datatable_all'); ?>
 <?= $this->endSection() ?>

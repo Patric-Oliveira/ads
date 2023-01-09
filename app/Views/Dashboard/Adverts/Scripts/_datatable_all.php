@@ -6,21 +6,24 @@
             "deferRender": true,
             "processing": true,
             "responsive": true,
-            "language": {
-                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>',
-            },
-            ajax: '<?php echo route_to('plans.get.all'); ?>',
+            ajax: '<?php echo route_to('get.all.my.adverts'); ?>',
             columns: [{
+                    data: 'image'
+                },
+                {
                     data: 'code'
                 },
                 {
-                    data: 'name'
+                    data: 'title'
                 },
                 {
-                    data: 'is_highlighted'
+                    data: 'category'
                 },
                 {
-                    data: 'details'
+                    data: 'is_published'
+                },
+                {
+                    data: 'address'
                 },
                 {
                     data: 'actions'

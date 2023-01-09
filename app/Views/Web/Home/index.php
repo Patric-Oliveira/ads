@@ -128,5 +128,4 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<?php echo $title ?? ''; ?>
 <?= $this->endSection() ?>
