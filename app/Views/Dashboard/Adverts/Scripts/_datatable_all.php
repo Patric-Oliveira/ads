@@ -15,10 +15,10 @@
                     data: 'image'
                 },
                 {
-                    data: 'code'
+                    data: 'title'
                 },
                 {
-                    data: 'title'
+                    data: 'code'
                 },
                 {
                     data: 'category'

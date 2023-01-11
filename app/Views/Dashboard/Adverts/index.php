@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Imagem</th>
-                                        <th scope="col" class="none">Código</th>
                                         <th scope="col" class="all">Título</th>
+                                        <th scope="col" class="none">Código</th>
                                         <th scope="col" class="none text-center">Categoria</th>
                                         <th scope="col">Status</th>
                                         <th scope="col" class="none">Onde</th>
