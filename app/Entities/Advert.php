@@ -35,4 +35,19 @@ class Advert extends Entity
         //unset($this->attributes['address']);
         unset($this->attributes['images']);
     }
+
+    public function image()
+    {
+        return 'Imagem';
+    }
+
+    public function isPublished()
+    {
+        return 'Publica';
+    }
+
+    public function address()
+    {
+        return 'Endreço';
+    }
 }
